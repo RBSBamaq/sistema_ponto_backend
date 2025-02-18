@@ -8,7 +8,7 @@ from db import db
 import models
 
 from resources.student import blp as StudentBlueprint
-from resources.timeLog import blp as TimeLogBlueprint
+from resources.time_log import blp as TimeLogBlueprint
 from resources.trainer import blp as TrainerBlueprint
 
 def create_app(db_url=None):
