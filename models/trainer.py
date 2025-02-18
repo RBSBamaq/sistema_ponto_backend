@@ -11,4 +11,6 @@ class TrainerModel(db.model):
 
     students = db.relationship("StudentModel", back_populates="trainer", lazy="dynamic")
 
+    time_logs = db.relationship("TimeLogModel", back_populates="trainer")
+
 

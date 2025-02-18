@@ -8,8 +8,10 @@ class TrainerModel(db.model):
     password = db.Column(db.String(80), nullable=False)
     firstName = db.Column(db.String(80), unique=False, nullable=False)
     lastname = db.Column(db.String(80), unique=False, nullable=False)
-    
+
     trainer_id = db.Column(
         db.Integer, db.ForeignKey("trainers.id"), unique=False, nullable=False
     )
     trainer = db.relationship("TrainerModel", back_populates="students")
+
+    time_logs = db.relationship("TimeLogModel", back_populates="student")
