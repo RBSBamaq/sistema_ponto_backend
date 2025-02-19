@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask
+from flask_jwt_extended import JWTManager
 from flask_smorest import Api
 
 from db import db
@@ -26,6 +27,9 @@ def create_app(db_url=None):
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.init_app(app)
     api = Api(app)
+
+    app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY")
+    jwt = JWTManager(app)
 
     with app.app_context():
         db.create_all()
