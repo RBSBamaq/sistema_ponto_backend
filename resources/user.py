@@ -48,9 +48,13 @@ class UserRegister(MethodView):
             abort(409, message="A user with that email already exists.")
 
         user = UserModel(
-            email=user_data["email"],
-            password=pbkdf2_sha256.hash(user_data["password"]),
-        )
+        email=user_data["email"],
+        password=pbkdf2_sha256.hash(user_data["password"]),
+        firstName=user_data["firstName"],
+        lastName=user_data["lastName"],
+        role=user_data["role"] 
+)
+
         db.session.add(user)
         db.session.flush()
 

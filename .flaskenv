@@ -1,3 +1,4 @@
 FLASK_APP=app
 FLASK_DEBUG=1
 JWT_SECRET_KEY=1c632a3d401561f0f3ad0ed3cfc049d9f7e6c815a8425808500a3152c8a2961b
+DATABASE_URL=postgresql://rafael:Cabeludo5@localhost/sistema_de_ponto
