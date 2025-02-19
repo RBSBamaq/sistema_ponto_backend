@@ -24,19 +24,4 @@ class TeamList(MethodView):
     def get(self):
         return TeamModel.query.all()
 
-    @blp.arguments(TeamSchema)
-    @blp.response(201, TeamSchema)
-    def post(self, team_data):
-        team = TeamModel(**team_data)
-        try:
-            db.session.add(team)
-            db.session.commit()
-        except IntegrityError:
-            abort(
-                400,
-                message="A team with that name already exists.",
-            )
-        except SQLAlchemyError:
-            abort(500, message="An error occurred creating the team.")
-
-        return team
+   

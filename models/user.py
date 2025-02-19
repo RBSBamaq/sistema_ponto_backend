@@ -1,6 +1,6 @@
 from db import db
 
-class UserModel(db.model):
+class UserModel(db.Model):
     __tablename__ = "users"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -8,9 +8,10 @@ class UserModel(db.model):
     password = db.Column(db.String(80), nullable=False)
     firstName = db.Column(db.String(80), unique=False, nullable=False)
     lastname = db.Column(db.String(80), unique=False, nullable=False)
+    role = db.Column(db.String(80), unique=False, nullable=False)
 
     team_id = db.Column(
-        db.Integer, db.ForeignKey("teams.id"), unique=False, nullable=False
+        db.Integer, db.ForeignKey("teams.id"), unique=False, nullable=True
     )
     team = db.relationship("TeamModel", back_populates="users")
 
