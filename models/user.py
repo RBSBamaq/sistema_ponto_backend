@@ -1,7 +1,7 @@
 from db import db
 
-class TrainerModel(db.model):
-    __tablename__ = "trainers"
+class UserModel(db.model):
+    __tablename__ = "users"
 
     id = db.Column(db.Integer, primary_key=True)
     email =  db.Column(db.String(80), unique=True, nullable=False)
@@ -9,8 +9,9 @@ class TrainerModel(db.model):
     firstName = db.Column(db.String(80), unique=False, nullable=False)
     lastname = db.Column(db.String(80), unique=False, nullable=False)
 
-    students = db.relationship("StudentModel", back_populates="trainer", lazy="dynamic")
+    team_id = db.Column(
+        db.Integer, db.ForeignKey("teams.id"), unique=False, nullable=False
+    )
+    team = db.relationship("TeamModel", back_populates="users")
 
-    time_logs = db.relationship("TimeLogModel", back_populates="trainer")
-
-
+    time_logs = db.relationship("TimeLogModel", back_populates="user")

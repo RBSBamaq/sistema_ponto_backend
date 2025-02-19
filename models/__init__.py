@@ -1,2 +1,2 @@
-from models.trainer import TranerModel
-from models.student import StudentModel
+from models.team import TranerModel
+from models.user import UserModel

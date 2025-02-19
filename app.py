@@ -7,9 +7,9 @@ from db import db
 
 import models
 
-from resources.student import blp as StudentBlueprint
+from resources.user import blp as UserBlueprint
 from resources.time_log import blp as TimeLogBlueprint
-from resources.trainer import blp as TrainerBlueprint
+from resources.team import blp as TeamBlueprint
 
 def create_app(db_url=None):
     app = Flask(__name__)
@@ -30,8 +30,8 @@ def create_app(db_url=None):
     with app.app_context():
         db.create_all()
 
-    api.register_blueprint(StudentBlueprint)
+    api.register_blueprint(UserBlueprint)
     api.register_blueprint(TimeLogBlueprint)
-    api.register_blueprint(TrainerBlueprint)
+    api.register_blueprint(TeamBlueprint)
 
     return app

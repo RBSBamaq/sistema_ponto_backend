@@ -9,10 +9,10 @@ class TimeLogModel(db.Model):
     schedule = db.Column(db.DateTime, default=datetime.utcnow, nullable=False) 
     status = db.Column(db.String(80), nullable=False) 
  
-    trainer_id = db.Column(db.Integer, db.ForeignKey('trainers.id'), nullable=True)
-    trainer = db.relationship("TrainerModel", back_populates="time_logs", foreign_keys=[trainer_id])
+    team_id = db.Column(db.Integer, db.ForeignKey('teams.id'), nullable=True)
+    team = db.relationship("TeamModel", back_populates="time_logs", foreign_keys=[team_id])
 
-    student_id = db.Column(db.Integer, db.ForeignKey('students.id'), nullable=True)
-    student = db.relationship("StudentModel", back_populates="time_logs", foreign_keys=[student_id])
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=True)
+    user = db.relationship("UserModel", back_populates="time_logs", foreign_keys=[user_id])
 
 
